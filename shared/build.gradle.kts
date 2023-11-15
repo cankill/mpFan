@@ -24,9 +24,15 @@ kotlin {
             dependencies {
                 implementation(compose.runtime)
                 implementation(compose.foundation)
-                implementation(compose.material)
+                implementation(compose.material3)
+                implementation(compose.materialIconsExtended)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+
+                implementation("com.squareup.sqldelight:runtime:1.5.5")
+                implementation("com.squareup.sqldelight:coroutines-extensions:1.5.5")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.1")
+
                 implementation("media.kamel:kamel-image:0.8.3")
                 implementation("io.ktor:ktor-client-core:2.3.6")
                 implementation("io.ktor:ktor-client-content-negotiation:2.3.6")
@@ -42,6 +48,7 @@ kotlin {
                 api("androidx.appcompat:appcompat:1.6.1")
                 api("androidx.core:core-ktx:1.10.1")
                 implementation("io.ktor:ktor-client-android:2.3.6")
+                implementation("com.squareup.sqldelight:android-driver:1.5.5")
 
             }
         }
@@ -55,6 +62,7 @@ kotlin {
             iosSimulatorArm64Main.dependsOn(this)
             dependencies {
                 implementation("io.ktor:ktor-client-darwin:2.3.6")
+                implementation("com.squareup.sqldelight:native-driver:1.5.5")
             }
         }
     }
@@ -78,4 +86,12 @@ android {
     kotlin {
         jvmToolchain(17)
     }
+}
+
+dependencies {
+    implementation("androidx.core:core:1.12.0")
+    commonMainApi("dev.icerock.moko:mvvm-core:0.16.1")
+    commonMainApi("dev.icerock.moko:mvvm-compose:0.16.1")
+    commonMainApi("dev.icerock.moko:mvvm-flow:0.16.1")
+    commonMainApi("dev.icerock.moko:mvvm-flow-compose:0.16.1")
 }
